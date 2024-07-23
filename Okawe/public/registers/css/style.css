@@ -1,0 +1,612 @@
+@font-face {
+    font-family: "Muli-Regular";
+    src: url("../fonts/muli/Muli-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Muli-SemiBold";
+    src: url("../fonts/muli/Muli-SemiBold.ttf");
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Muli-Regular";
+    font-size: 14px;
+    margin: 0;
+    color: #999;
+}
+
+input,
+textarea,
+select,
+button {
+    font-family: "Muli-Regular";
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul {
+    margin: 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+ul {
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+:focus {
+    outline: none;
+}
+
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient( 90deg, #E5E3E2, #F6F7F9,  #E5E3E2);
+}
+
+.inner {
+    position: relative;
+    width: 435px;
+}
+
+.image-1 {
+    position: absolute;
+    bottom: -12px;
+    left: -319px;
+    z-index: 99;
+}
+
+.image-2 {
+    position: absolute;
+    bottom: 0;
+    right: -253px;
+}
+
+form {
+    width: 100%;
+    position: relative;
+    z-index: 9;
+    padding: 77px 61px 66px;
+    background: #fff;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    -ms-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    -o-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+h3 {
+    text-transform: uppercase;
+    font-size: 25px;
+    font-family: "Muli-SemiBold";
+    color: #333;
+    letter-spacing: 3px;
+    text-align: center;
+    margin-bottom: 33px;
+}
+
+.form-holder {
+    position: relative;
+    margin-bottom: 21px;
+}
+
+.form-holder span {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 15px;
+    color: #333;
+}
+
+.form-holder span.lnr-lock {
+    left: 2px;
+}
+
+.form-control {
+    border: none;
+    border-bottom: 1px solid #e6e6e6;
+    display: block;
+    width: 100%;
+    height: 38px;
+    background: none;
+    padding: 3px 42px 0px;
+    color: #666;
+    font-family: "Muli-SemiBold";
+    font-size: 16px;
+}
+
+.form-control::-webkit-input-placeholder {
+    font-size: 14px;
+    font-family: "Muli-Regular";
+    color: #999;
+    transform: translateY(1px);
+}
+
+.form-control::-moz-placeholder {
+    font-size: 14px;
+    font-family: "Muli-Regular";
+    color: #999;
+    transform: translateY(1px);
+}
+
+.form-control:-ms-input-placeholder {
+    font-size: 14px;
+    font-family: "Muli-Regular";
+    color: #999;
+    transform: translateY(1px);
+}
+
+.form-control:-moz-placeholder {
+    font-size: 14px;
+    font-family: "Muli-Regular";
+    color: #999;
+    transform: translateY(1px);
+}
+
+.form-control:focus {
+    border-bottom: 1px solid #accffe;
+}
+/*  */
+
+button {
+    width: 100px;
+    /* height: 40px; */
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    position: absolute;
+    left: calc(50% - 50px); /* Start at the center */
+    transition: left 0.1s ease;
+}
+/*  */
+
+.button-container {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    text-align: center;
+    position: relative;
+    height: 50px; /* Height of the button container */
+}
+
+button {
+    border: none;
+    width: 40%;
+    height: 49px;
+    /* l'espace */
+    margin-top: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: #99ccff;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: "Muli-SemiBold";
+    font-size: 15px;
+    letter-spacing: 2px;
+    transition: all 0.5s;
+    position: relative;
+    overflow: hidden;
+    /*  */
+
+    position: absolute;
+    left: calc(50% - 50px); /* Start at the center */
+    transition: left 0.1s ease;
+    /*  */
+}
+
+button span {
+    position: relative;
+    z-index: 2;
+}
+
+button:before,
+button:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(52, 152, 253, 0.25);
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    -webkit-transform: translate(-100%, 0);
+    transform: translate(-100%, 0);
+    -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+    transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+}
+
+button:after {
+    -webkit-transition-delay: 0.2s;
+    transition-delay: 0.2s;
+}
+
+button:hover:before,
+button:hover:after {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+}
+
+@media (max-width: 991px) {
+    .inner {
+        width: 400px;
+        left: 4%;
+    }
+}
+
+@media (max-width: 767px) {
+    .inner {
+        width: 100%;
+        left: 0;
+    }
+
+    .image-1,
+    .image-2 {
+        display: none;
+    }
+
+    form {
+        padding: 35px;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        -ms-box-shadow: none;
+        -o-box-shadow: none;
+    }
+
+    .wrapper {
+        background: none;
+    }
+}
+
+/*# sourceMappingURL=style.css.map */
+
+/* fle */
+.file-upload {
+    display: block;
+    text-align: center;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+}
+.file-upload .file-select {
+    display: block;
+    border: 2px solid #dce4ec;
+    color: #34495e;
+    cursor: pointer;
+    height: 40px;
+    line-height: 40px;
+    text-align: left;
+    background: #ffffff;
+    overflow: hidden;
+    position: relative;
+}
+.file-upload .file-select .file-select-button {
+    background: #dce4ec;
+    padding: 0 10px;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+}
+.file-upload .file-select .file-select-name {
+    line-height: 40px;
+    display: inline-block;
+    padding: 0 10px;
+}
+.file-upload .file-select:hover {
+    border-color: #34495e;
+    transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+}
+.file-upload .file-select:hover .file-select-button {
+    background: #34495e;
+    color: #ffffff;
+    transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+}
+.file-upload.active .file-select {
+    border-color: #3fa46a;
+    transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+}
+.file-upload.active .file-select .file-select-button {
+    background: #3fa46a;
+    color: #ffffff;
+    transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+}
+.file-upload .file-select input[type="file"] {
+    z-index: 100;
+    cursor: pointer;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+.file-upload .file-select.file-select-disabled {
+    opacity: 0.65;
+}
+.file-upload .file-select.file-select-disabled:hover {
+    cursor: default;
+    display: block;
+    border: 2px solid #dce4ec;
+    color: #34495e;
+    cursor: pointer;
+    height: 40px;
+    line-height: 40px;
+    margin-top: 5px;
+    text-align: left;
+    background: #ffffff;
+    overflow: hidden;
+    position: relative;
+}
+.file-upload .file-select.file-select-disabled:hover .file-select-button {
+    background: #dce4ec;
+    color: #666666;
+    padding: 0 10px;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+}
+.file-upload .file-select.file-select-disabled:hover .file-select-name {
+    line-height: 40px;
+    display: inline-block;
+    padding: 0 10px;
+}
+
+/* fle fn */
+
+ /* CSS for the alert window and message */
+ .alert-window {
+    position: relative; /* Relative position for placement */
+    margin-top: 20px; /* Adjust top margin as needed */
+    background-color: rgba(255, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 1000;
+    animation: fadeInOut 0.5s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+/* CHECK BOX DEBUT */
+ /* Styles for the checkbox animation */
+ .terms-container {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.checkbox-container {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    font-size: 22px;
+    user-select: none;
+    margin-right: 10px;
+    width: 25px; /* Largeur de la boîte */
+    height: 25px; /* Hauteur de la boîte */
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%; /* Utilisation de la hauteur du conteneur */
+    width: 100%; /* Utilisation de la largeur du conteneur */
+    background-color: #ccc;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.checkbox-container:hover .checkmark {
+    background-color: #a1a1a1;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: #fd7701;
+    animation: checkmark-bounce 0.5s ease;
+}
+
+.checkbox-container input:checked ~ .checkmark::after {
+    display: block;
+}
+
+.checkbox-container .checkmark::after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.terms-label {
+    font-size: 16px;
+    color: #555;
+    transition: color 0.3s, transform 0.3s;
+    margin-left: 10px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.checkbox-container input:checked + .terms-label {
+    color: #fd7701;
+    transform: scale(1.1);
+    animation: label-bounce 0.5s ease;
+}
+
+@keyframes checkmark-bounce {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes label-bounce {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.terms-label a {
+    text-decoration: none;
+    color: inherit;
+}
+/* CHECK BOX FIN */
+
+/* BOUTON LOGIN ENTREE ET ANIMATION DEBUT */
+.wrapper {
+    position: relative;
+    overflow: hidden;
+}
+.already-account {
+    position: absolute;
+    bottom: 20px;
+    right: -200px;
+    font-size: 16px;
+    transition: right 1s ease-in-out, opacity 1s ease-in-out;
+    opacity: 0; /* Initial opacity to hide the element */
+}
+.already-account a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+}
+.already-account a:hover {
+    background-color: #45a049;
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.show-already-account {
+    right: 20px;
+    opacity: 1; /* Make the element visible during the animation */
+}
+/* BOUTON LOGIN ENTREE ET ANIMATION FIN */
+
+
+
+/* transition de page */
+/* Basic styles */
+body, html {
+   
+}
+
+
+
+.page {
+   
+    transition: transform 0.7s ease, opacity 0.7s ease;
+    opacity: 0;
+    transform: translateX(100%) rotateY(90deg) scale(0.8);
+}
+
+.page h2 {
+    margin-bottom: 20px;
+}
+
+.page form {
+    display: flex;
+    flex-direction: column;
+}
+
+.page form input {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+
+
+
+.page a:hover {
+    text-decoration: underline;
+}
+
+.page.active {
+    opacity: 1;
+    transform: translateX(0) rotateY(0) scale(1);
+}
