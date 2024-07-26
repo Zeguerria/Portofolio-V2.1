@@ -110,15 +110,15 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="./Receveurs" class="nav-link">
+                                <a href="{{route('P-Projets')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon msicons"></i>
-                                <p class="liens">Receveur</p>
+                                <p class="liens">Projet</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="./Entites" class="nav-link">
+                                <a href="{{route('TS-Tasks')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon msicons"></i>
-                                <p class="liens">Entité</p>
+                                <p class="liens">Tache</p>
                                 </a>
                             </li>
                         </ul>
@@ -280,9 +280,9 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="./ArchiveCorbeilles" class="nav-link">
+                                <a href="{{route('PC-Projets')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon msicons"></i>
-                                <p class="liens">Archive</p>
+                                <p class="liens">Projet</p>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -292,9 +292,9 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="./ProvinceCorbeilles" class="nav-link">
+                                <a href="{{route('TSC-Tasks')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon msicons"></i>
-                                <p class="liens">Provinces</p>
+                                <p class="liens">Tache</p>
                                 </a>
                             </li>
                             <li class="nav-item">

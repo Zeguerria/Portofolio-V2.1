@@ -12,6 +12,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
+        $schedule->command('tasks:update-status')->daily();
         // $schedule->command('inspire')->hourly();
     }
 

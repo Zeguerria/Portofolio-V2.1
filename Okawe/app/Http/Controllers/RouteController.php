@@ -4,17 +4,18 @@ namespace App\Http\Controllers;
 
 use Exception;
 use App\Models\Post;
+use App\Models\User;
+use App\Models\Profil;
+use App\Models\Projet;
 use App\Models\Comment;
 use App\Models\Visitor;
 use App\Models\Parametre;
 use App\Models\Entreprise;
 use App\Models\Realisation;
-use Illuminate\Http\Request;
-use App\Models\CompetenceMaitrise;
 use App\Models\Habilitation;
-use App\Models\Profil;
+use Illuminate\Http\Request;
 use App\Models\TypeParametre;
-use App\Models\User;
+use App\Models\CompetenceMaitrise;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
@@ -45,6 +46,13 @@ class RouteController extends Controller
     }
     public function Home()
     {
+        // DONNEE POUR LE FORMULAIR D'AJOUT D'UNE TACHE DANS LE HOMEADMIN DEBUT
+            $data ['projets'] = Projet::where('supprimer','=',0)->orderBy('name')->get();
+            $data ['users'] = User::where('profil_id','!=',1)->where('supprimer','=',0)->get();
+        // DONNEE POUR LE FORMULAIR D'AJOUT D'UNE TACHE DANS LE HOMEADMIN FIN
+
+
+
         if(Auth::user()){
             $data['user'] = Auth::user();
             $data['notifications'] = $data['user']->unreadNotifications;
@@ -67,14 +75,26 @@ class RouteController extends Controller
 
 
 
-    public function Portofolio(){
-        Visitor::create([
-            'ip_address' => $request->ip(),
-            'visited_at' => now(),
-        ]);
+    public function Portofolio(Request $request){
+        // Visitor::create([
+        //     'ip_address' => $request->ip(),
+        //     'visited_at' => now(),
+        // ]);
+        // Obtenez l'adresse IP de la requête
+        $ipAddress = $request->ip();
 
-        // Rendre la vue
-        return view('home');
+        // Vérifiez si une visite pour cette IP a déjà été enregistrée aujourd'hui
+        $existingVisit = Visitor::where('ip_address', $ipAddress)
+                                ->whereDate('visited_at', now()->toDateString())
+                                ->first();
+        if (!$existingVisit) {
+            // Enregistrer la visite seulement si elle n'a pas encore été enregistrée pour aujourd'hui
+            Visitor::create([
+                'ip_address' => $ipAddress,
+                'visited_at' => now(),
+            ]);
+        }
+
         $data['posts']=Post::where('supprimer','=',0)->orderBy('title')->get();
         $data['categories']= Parametre::where('supprimer','=',0)->orderBy('libelle')->get();
         $data['equipe'] = Realisation::where('supprimer','=',0)->where('categorie_id','=',3)->orderBy('titre')->get();

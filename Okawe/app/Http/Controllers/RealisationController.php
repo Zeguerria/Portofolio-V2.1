@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Exception;
 use Carbon\Carbon;
+use App\Models\User;
+use App\Models\Projet;
 use App\Models\Parametre;
 use App\Models\Realisation;
 use Illuminate\Http\Request;
@@ -29,6 +31,11 @@ class RealisationController extends Controller
             $data['notifications'] = $data['user']->unreadNotifications;
 
         }
+        // DONNEE POUR LE FORMULAIR D'AJOUT D'UNE TACHE DANS LE HOMEADMIN DEBUT
+        $data ['projets'] = Projet::where('supprimer','=',0)->orderBy('name')->get();
+        $data ['users'] = User::where('profil_id','!=',1)->where('supprimer','=',0)->get();
+    // DONNEE POUR LE FORMULAIR D'AJOUT D'UNE TACHE DANS LE HOMEADMIN FIN
+
         $data['RealisationTotal']= Realisation::where('supprimer','=',0)->count();
         $data['RealisationTotalC']= Realisation::where('supprimer','=',1)->count();
         $data['categories']= Parametre::where('supprimer','=',0)->where('type_parametre_id','=',2)->orderBy('libelle')->get();
@@ -43,6 +50,11 @@ class RealisationController extends Controller
             $data['notifications'] = $data['user']->unreadNotifications;
 
         }
+        // DONNEE POUR LE FORMULAIR D'AJOUT D'UNE TACHE DANS LE HOMEADMIN DEBUT
+        $data ['projets'] = Projet::where('supprimer','=',0)->orderBy('name')->get();
+        $data ['users'] = User::where('profil_id','!=',1)->where('supprimer','=',0)->get();
+    // DONNEE POUR LE FORMULAIR D'AJOUT D'UNE TACHE DANS LE HOMEADMIN FIN
+
         $data['RealisationTotalC']= Realisation::where('supprimer','=',1)->count();
         $data['RealisationTotal']= Realisation::where('supprimer','=',0)->count();
         $data['realisations'] = Realisation::where('supprimer','=',1)->orderBy('titre')->get();

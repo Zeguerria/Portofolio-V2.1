@@ -399,109 +399,235 @@
 
 
 
-
-
-
-    {{-- SCRIPT RADAR DEBUT --}}
-    {{-- <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            var ctx = document.getElementById('radarChart').getContext('2d');
-
-            // Collecter toutes les compétences et maîtrises dans un seul tableau
-            var allData = [];
-            var labels = [];
-            var dataCompetences = [];
-            var dataMaitrises = [];
-
-            // Ajout des compétences
-            @foreach ($competences as $competence)
-                allData.push({
-                    type: 'competence',
-                    nom: '{{ $competence->nom }}',
-                    level: {{ $competence->level }}
-                });
-            @endforeach
-
-            // Ajout des maîtrises
-            @foreach ($maitrises as $maitrise)
-                allData.push({
-                    type: 'maitrise',
-                    nom: '{{ $maitrise->nom }}',
-                    level: {{ $maitrise->level }}
-                });
-            @endforeach
-
-            // Création des labels et données uniques
-            allData.forEach(function(item) {
-                if (!labels.includes(item.nom)) {
-                    labels.push(item.nom);
-                }
-            });
-
-            labels.forEach(function(label) {
-                var competence = allData.find(function(item) {
-                    return item.nom === label && item.type === 'competence';
-                });
-                var maitrise = allData.find(function(item) {
-                    return item.nom === label && item.type === 'maitrise';
-                });
-
-                dataCompetences.push(competence ? competence.level : 0);
-                dataMaitrises.push(maitrise ? maitrise.level : 0);
-            });
-
-            var radarChart = new Chart(ctx, {
-                type: 'radar',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Niveaux de compétence',
-                        data: dataCompetences,
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        borderWidth: 1
-                    }, {
-                        label: 'Niveaux de maîtrise',
-                        data: dataMaitrises,
-                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        r: {
-                            ticks: {
-                                beginAtZero: true,
-                                max: 100
-                            },
-                            pointLabels: {
-                                callback: function(value) {
-                                    return value;
-                                }
-                            }
+    {{-- LES WIDGETS % SCRIPT DEBUT --}}
+        {{-- <script>
+            $(document).ready(function() {
+                // Fonction pour animer le pourcentage
+                function animatePercentage(newPercentage) {
+                    $({ percentage: 0 }).animate({ percentage: newPercentage }, {
+                        duration: 1000, // Durée de l'animation en millisecondes
+                        step: function (now) {
+                            $('#task-percentage').html(`${Math.round(now)}<sup style="font-size: 20px">%</sup>`);
                         }
-                    }
+                    });
                 }
+                // Fonction pour mettre à jour le pourcentage des tâches
+                function updateTaskPercentage() {
+                    $.ajax({
+                        url: '/TacheTermine', // URL de la route pour obtenir le pourcentage
+                        type: 'GET',
+                        success: function(data) {
+                            // Animer le pourcentage avec la nouvelle valeur
+                            animatePercentage(data.percentage);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Erreur lors de la récupération des données :', error);
+                        }
+                    });
+                }
+                // Appel initial pour mettre à jour le pourcentage lorsque la page se charge
+                updateTaskPercentage();
+                // Gestionnaire de clic pour le bouton d'actualisation
+                $(document).on('click', '.termeneAjours', function(e) {
+                    e.preventDefault(); // Empêche le comportement par défaut du lien
+                    updateTaskPercentage(); // Met à jour le pourcentage lorsqu'on clique sur le bouton d'actualisation
+                });
             });
+        </script>
+        <script>
+            $(document).ready(function() {
+                // Fonction pour animer le pourcentage
+                function animatePercentage(newPercentage) {
+                    $({ percentageAttente: 0 }).animate({ percentageAttente: newPercentage }, {
+                        duration: 1000, // Durée de l'animation en millisecondes
+                        step: function (now) {
+                            $('#TacheAttente').html(`${Math.round(now)}<sup style="font-size: 20px">%</sup>`);
+                        }
+                    });
+                }
 
-            // Ajouter des classes CSS aux labels et ticks après la création du graphique
-            radarChart.update();
+                // Fonction pour mettre à jour le pourcentage des tâches en attente
+                function updateTaskPercentage() {
+                    $.ajax({
+                        url: '/tache-attente', // URL de la route pour obtenir le pourcentage des tâches en attente
+                        type: 'GET',
+                        success: function(data) {
+                            console.log('Données reçues:', data); // Vérifiez les données reçues
+                            if (data.percentageAttente !== undefined) {
+                                // Animer le pourcentage avec la nouvelle valeur
+                                animatePercentage(data.percentageAttente);
+                            } else {
+                                console.error('La clé "percentageAttente" est manquante dans les données.');
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Erreur lors de la récupération des données :', error);
+                        }
+                    });
+                }
 
-            // Utiliser un délai pour s'assurer que le DOM est prêt
-            setTimeout(() => {
-                var labels = document.querySelectorAll("#radarChart + div canvas");
-                labels.forEach((label) => {
-                    label.classList.add('mas');
+                // Appel initial pour mettre à jour le pourcentage lorsque la page se charge
+                updateTaskPercentage();
+
+                // Gestionnaire de clic pour le bouton d'actualisation
+                $(document).on('click', '.attenteAjours', function(e) {
+                    e.preventDefault(); // Empêche le comportement par défaut du lien
+                    updateTaskPercentage(); // Met à jour le pourcentage lorsqu'on clique sur le bouton d'actualisation
+                });
+            });
+        </script> --}}
+        <script>
+            $(document).ready(function() {
+                // Fonction pour animer le pourcentage des tâches terminées
+                function animatePercentageTerminee(newPercentage) {
+                    $({ percentageTerminee: 0 }).animate({ percentageTerminee: newPercentage }, {
+                        duration: 1000, // Durée de l'animation en millisecondes
+                        step: function (now) {
+                            $('#task-percentage').html(`${Math.round(now)}<sup style="font-size: 20px">%</sup>`);
+                        }
+                    });
+                }
+
+                // Fonction pour mettre à jour le pourcentage des tâches terminées
+                function updateTaskPercentageTerminee() {
+                    $.ajax({
+                        url: '/TacheTermine', // URL de la route pour obtenir le pourcentage des tâches terminées
+                        type: 'GET',
+                        success: function(data) {
+                            animatePercentageTerminee(data.percentage);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Erreur lors de la récupération des données :', error);
+                        }
+                    });
+                }
+
+                // Fonction pour animer le pourcentage des tâches en attente
+                function animatePercentageAttente(newPercentage) {
+                    $({ percentageAttente: 0 }).animate({ percentageAttente: newPercentage }, {
+                        duration: 1000, // Durée de l'animation en millisecondes
+                        step: function (now) {
+                            $('#TacheAttente').html(`${Math.round(now)}<sup style="font-size: 20px">%</sup>`);
+                        }
+                    });
+                }
+
+                // Fonction pour mettre à jour le pourcentage des tâches en attente
+                function updateTaskPercentageAttente() {
+                    $.ajax({
+                        url: '/TacheAttente', // URL de la route pour obtenir le pourcentage des tâches en attente
+                        type: 'GET',
+                        success: function(data) {
+                            console.log('Données reçues:', data); // Vérifiez les données reçues
+                            if (data.percentageAttente !== undefined) {
+                                animatePercentageAttente(data.percentageAttente);
+                            } else {
+                                console.error('La clé "percentageAttente" est manquante dans les données.');
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Erreur lors de la récupération des données :', error);
+                        }
+                    });
+                }
+                // UUTILITATAIRE POUR LE WIDGET % STATUT DES TACHES REPORTE DEBUT
+                    // Fonction pour animer le pourcentage des tâches reporté
+                        function animatePercentageReporte(newPercentage) {
+                            $({ percentageReporte: 0 }).animate({ percentageReporte: newPercentage }, {
+                                duration: 1000, // Durée de l'animation en millisecondes
+                                step: function (now) {
+                                    $('#TacheReporte').html(`${Math.round(now)}<sup style="font-size: 20px">%</sup>`);
+                                }
+                            });
+                        }
+                    // Fonction pour mettre à jour le pourcentage des tâches reporté
+                        function updateTaskPercentageReporte() {
+                            $.ajax({
+                                url: '/TacheReporte', // URL de la route pour obtenir le pourcentage des tâches en attente
+                                type: 'GET',
+                                success: function(data) {
+                                    console.log('Données reçues:', data); // Vérifiez les données reçues
+                                    if (data.percentageReporte !== undefined) {
+                                        animatePercentageReporte(data.percentageReporte);
+                                    } else {
+                                        console.error('La clé "percentageReporte" est manquante dans les données.');
+                                    }
+                                },
+                                error: function(xhr, status, error) {
+                                    console.error('Erreur lors de la récupération des données :', error);
+                                }
+                            });
+                        }
+                // UUTILITATAIRE POUR LE WIDGET % STATUT DES TACHES REPORTE FIN
+                
+                // UUTILITATAIRE POUR LE WIDGET % STATUT DES TACHES EN COURS DEBUT
+                    // Fonction pour animer le pourcentage des tâches en cours
+                        function animatePercentageCours(newPercentage) {
+                            $({ percentageCours: 0 }).animate({ percentageCours: newPercentage }, {
+                                duration: 1000, // Durée de l'animation en millisecondes
+                                step: function (now) {
+                                    $('#TacheCours').html(`${Math.round(now)}<sup style="font-size: 20px">%</sup>`);
+                                }
+                            });
+                        }
+                    // Fonction pour mettre à jour le pourcentage des tâches en cours
+                        function updateTaskPercentageCours() {
+                            $.ajax({
+                                url: '/TacheCours', // URL de la route pour obtenir le pourcentage des tâches en attente
+                                type: 'GET',
+                                success: function(data) {
+                                    console.log('Données reçues:', data); // Vérifiez les données reçues
+                                    if (data.percentageCours !== undefined) {
+                                        animatePercentageCours(data.percentageCours);
+                                    } else {
+                                        console.error('La clé "percentageCours" est manquante dans les données.');
+                                    }
+                                },
+                                error: function(xhr, status, error) {
+                                    console.error('Erreur lors de la récupération des données :', error);
+                                }
+                            });
+                        }
+                // UUTILITATAIRE POUR LE WIDGET % STATUT DES TACHES EN COURS FIN
+                
+
+            // MISE AJOURS DES WIDGET A LA RECHARCHE DE LA PAGE DEBUT
+                // Appels initiaux pour mettre à jour les pourcentages lorsque la page se charge
+                updateTaskPercentageAttente();
+                updateTaskPercentageReporte();
+                updateTaskPercentageCours();
+                updateTaskPercentageTerminee();
+            // MISE AJOURS DES WIDGET A LA RECHARCHE DE LA PAGE FIN
+                // Gestionnaire de clic pour le bouton d'actualisation des tâches terminées
+                $(document).on('click', '.termeneAjours', function(e) {
+                    e.preventDefault(); // Empêche le comportement par défaut du lien
+                    updateTaskPercentageTerminee(); // Met à jour le pourcentage des tâches terminées
                 });
 
-                var ticks = document.querySelectorAll("#radarChart + div canvas");
-                ticks.forEach((tick) => {
-                    tick.classList.add('menus');
+                // Gestionnaire de clic pour le bouton d'actualisation des tâches en attente
+                $(document).on('click', '.attenteAjours', function(e) {
+                    e.preventDefault(); // Empêche le comportement par défaut du lien
+                    updateTaskPercentageAttente(); // Met à jour le pourcentage des tâches en attente
                 });
-            }, 1000);
-        });
-    </script> --}}
+                // Gestionnaire de clic pour le bouton d'actualisation des tâches reporté
+                $(document).on('click', '.reporteAjours', function(e) {
+                    e.preventDefault(); // Empêche le comportement par défaut du lien
+                    updateTaskPercentageReporte(); // Met à jour le pourcentage des tâches reporté
+                });
+                // Gestionnaire de clic pour le bouton d'actualisation des tâches en cours
+                $(document).on('click', '.reporteCours', function(e) {
+                    e.preventDefault(); // Empêche le comportement par défaut du lien
+                    updateTaskPercentageCours(); // Met à jour le pourcentage des tâches en cours
+                });
+            });
+        </script>
+
+
+    {{-- LES WIDGETS % SCRIPT DEBUT --}}
+
+
+
+{{-- SCRIPT RADAR POUR MES MAITRISE ET COMPETENCE DEBUT --}}
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
             const body = document.body;
@@ -646,48 +772,23 @@
             });
         });
     </script>
+{{-- SCRIPT RADAR  POUR MES MAITRISE ET COMPETENCE FIN --}}
+{{-- LES CDN DEBUT --}}
+    {{-- CDN JQUERY-3.6.0 POUR LES LISTES DE TACHE ET AUTRE DEBUT--}}
+        <script src="{{asset('glbal/jquery-3/jquery-3.6.0.min.js')}}"></script>
+        {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+    {{-- CDN JQUERY-3.6.0 POUR LES LISTES DE TACHE ET AUTRE FIN--}}
+    {{-- CDN POUR LES CHARTS DEBUT--}}
+        <script src="{{asset('glbal/charts/chart.js')}}"></script>
+        {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> --}}
 
-{{-- SCRIPT RADAR FIN --}}
+    {{-- CDN POUR LES CHARTS FIN--}}
+
+{{-- LES CDN FIN --}}
 
 
 
-
-{{-- Réalisation chart --}}
-{{-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> --}}
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
-    {{--  Réalisations stackedBarChart debt --}}
-    {{-- <script>
-        $(document).ready(function() {
-            fetch('/fetch-chart-data')
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Fetched Data:', data); // Pour débogage
-
-                    var stackedBarChartCanvas = $('#stackedBarChart').get(0).getContext('2d');
-                    var stackedBarChartOptions = {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            x: {
-                                stacked: true,
-                            },
-                            y: {
-                                stacked: true,
-                                beginAtZero: true
-                            }
-                        }
-                    };
-
-                    new Chart(stackedBarChartCanvas, {
-                        type: 'bar',
-                        data: data,
-                        options: stackedBarChartOptions
-                    });
-                })
-                .catch(error => console.error('Error fetching chart data:', error));
-        });
-    </script> --}}
+{{--  SCRIPT REALISATION PERSONNEL ET EQUIPE EN BARR : Réalisations stackedBarChart debt --}}
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const body = document.body;
@@ -797,10 +898,7 @@
             });
         });
     </script>
-
-
-
-{{--  Réalisations stackedBarChart fn --}}
+{{--  SCRIPT REALISATION PERSONNEL ET EQUIPE EN BARR : Réalisations stackedBarChart fn --}}
 {{-- POST DONAUT DEBUT --}}
     {{-- <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -1014,5 +1112,106 @@
         });
     </script>
 {{-- VISITEUR PAR MOIS FIN --}}
+{{-- SCRIPT JQ POUR LA LISTE DES TACHES LA PAGINATION ET TOUT CE QUI VA AVEC LE BLOC DEBUT --}}
+    <script>
+        $(document).ready(function() {
+            function loadTasks(page = 1) {
+                $.ajax({
+                    url: `/tasks?page=${page}`,
+                    type: 'GET',
+                    success: function(data) {
+                        $('#todo-list').empty();
+                        $('#pagination').empty();
+
+                        data.data.forEach(task => {
+                            // Vérifie si le statut est "termine" pour définir la case comme cochée et désactivée
+                            const isChecked = task.status === 'termine' ? 'checked' : '';
+                            const isDisabled = task.status === 'termine' ? 'disabled checkbox-disabled' : '';
+
+                            // Affiche end_date si le statut est "termine", sinon start_date
+                            const dateToDisplay = task.status === 'termine' && task.end_date ? task.end_date : task.start_date || 'No date';
+
+                            // Applique la classe 'text-line-through' si le statut est "termine"
+                            const textClass = task.status === 'termine' ? 'text-line-through' : '';
+
+                            // Décide si l'icône d'édition doit être cachée ou non
+                            const editIconClass = task.status === 'termine' ? 'd-none' : '';
+
+                            $('#todo-list').append(`
+                                <li>
+                                    <span class="handle">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </span>
+                                    <div class="icheck-primary d-inline ml-2">
+                                        <input type="checkbox" value="" name="todo${task.id}" id="todoCheck${task.id}" ${isChecked} ${isDisabled}>
+                                        <label for="todoCheck${task.id}"></label>
+                                    </div>
+                                    <span class="text ${textClass}">${task.title} | ${task.status} &ensp;<i class="fas fa-hand-point-right msicons"></i> ${task.user ? task.user.name : 'N/A'}</span>
+                                    <small class="badge badge-info"><i class="far fa-clock"></i> ${dateToDisplay}</small>
+                                    <div class="tools">
+                                        <i class="fas fa-edit ${editIconClass} bg-warning" data-id="${task.id}" data-toggle="modal" data-target="#editTaskModal"></i>
+                                        <i class="fas fa-trash" data-id="${task.id}" data-toggle="modal" data-target="#deleteTaskModal"></i>
+                                    </div>
+                                </li>
+                            `);
+                        });
+
+                        // Pagination
+                        if (data.prev_page_url) {
+                            $('#pagination').append(`<li class="page-item"><a href="#" class="page-link" data-page="${data.current_page - 1}">&laquo;</a></li>`);
+                        }
+
+                        for (let i = 1; i <= data.last_page; i++) {
+                            $('#pagination').append(`<li class="page-item ${data.current_page == i ? 'active' : ''}"><a href="#" class="page-link" data-page="${i}">${i}</a></li>`);
+                        }
+
+                        if (data.next_page_url) {
+                            $('#pagination').append(`<li class="page-item"><a href="#" class="page-link" data-page="${data.current_page + 1}">&raquo;</a></li>`);
+                        }
+                    }
+                });
+            }
+
+            loadTasks();
+
+            // Gestion du changement de page
+            $(document).on('click', '#pagination .page-link', function(e) {
+                e.preventDefault();
+                const page = $(this).data('page');
+                loadTasks(page);
+            });
+
+            // Ouvrir le modal d'édition et pré-remplir le formulaire
+            $(document).on('click', '.fa-edit', function() {
+                const taskId = $(this).data('id');
+                const formAction = $('#editTaskForm').attr('action').replace(':id', taskId);
+
+                // Prépare l'action du formulaire
+                $('#editTaskForm').attr('action', formAction);
+                $('#task_id').val(taskId);
+
+                // Récupère les détails de la tâche pour pré-remplir le formulaire
+                $.ajax({
+                    url: `/tasks/${taskId}`,
+                    type: 'GET',
+                    success: function(task) {
+                        $('#status').val(task.status);
+                        $('#editTaskModal').modal('show');
+                    }
+                });
+            });
+
+            // Ouvrir le modal de suppression et configurer l'action du formulaire
+            $(document).on('click', '.fa-trash', function() {
+                const taskId = $(this).data('id');
+                const formAction = `/tasks/${taskId}`;
+                $('#deleteTaskForm').attr('action', formAction);
+                $('#deleteTaskModal').modal('show');
+            });
+        });
+    </script>
+{{-- SCRIPT JQ POUR LA LISTE DES TACHES LA PAGINATION ET TOUT CE QUI VA AVEC LE BLOC FIN --}}
+
 
 @endsection

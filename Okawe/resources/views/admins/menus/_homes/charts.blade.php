@@ -18,7 +18,7 @@
                                     <i class="fas fa-bars"></i>
                                 </button>
                                 <div class="dropdown-menu" role="menu">
-                                    <a href="#" class="dropdown-item">Add new event</a>
+                                    <a href="#" class="dropdown-item">Ajouter une tache</a>
                                     <a href="#" class="dropdown-item">Clear events</a>
                                     <div class="dropdown-divider"></div>
                                     <a href="#" class="dropdown-item">View calendar</a>
@@ -40,6 +40,264 @@
                             </div>
                             <!-- /.card-body -->
                     </div>
+                    {{-- <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="ion ion-clipboard mr-1"></i>
+                                To Do List
+                            </h3>
+
+                            <div class="card-tools">
+                                <ul class="pagination pagination-sm">
+                                <li class="page-item"><a href="#" class="page-link">&laquo;</a></li>
+                                <li class="page-item"><a href="#" class="page-link">1</a></li>
+                                <li class="page-item"><a href="#" class="page-link">2</a></li>
+                                <li class="page-item"><a href="#" class="page-link">3</a></li>
+                                <li class="page-item"><a href="#" class="page-link">&raquo;</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <ul class="todo-list" data-widget="todo-list">
+                                <li>
+                                <!-- drag handle -->
+                                <span class="handle">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </span>
+                                <!-- checkbox -->
+                                <div  class="icheck-primary d-inline ml-2">
+                                    <input type="checkbox" value="" name="todo1" id="todoCheck1">
+                                    <label for="todoCheck1"></label>
+                                </div>
+                                <!-- todo text -->
+                                <span class="text">Design a nice theme</span>
+                                <!-- Emphasis label -->
+                                <small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>
+                                <!-- General tools such as edit or delete-->
+                                <div class="tools">
+                                    <i class="fas fa-edit"></i>
+                                    <i class="fas fa-trash-o"></i>
+                                </div>
+                                </li>
+                                <li>
+                                <span class="handle">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </span>
+                                <div  class="icheck-primary d-inline ml-2">
+                                    <input type="checkbox" value="" name="todo2" id="todoCheck2" checked>
+                                    <label for="todoCheck2"></label>
+                                </div>
+                                <span class="text">Make the theme responsive</span>
+                                <small class="badge badge-info"><i class="far fa-clock"></i> 4 hours</small>
+                                <div class="tools">
+                                    <i class="fas fa-edit"></i>
+                                    <i class="fas fa-trash-o"></i>
+                                </div>
+                                </li>
+                                <li>
+                                <span class="handle">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </span>
+                                <div  class="icheck-primary d-inline ml-2">
+                                    <input type="checkbox" value="" name="todo3" id="todoCheck3">
+                                    <label for="todoCheck3"></label>
+                                </div>
+                                <span class="text">Let theme shine like a star</span>
+                                <small class="badge badge-warning"><i class="far fa-clock"></i> 1 day</small>
+                                <div class="tools">
+                                    <i class="fas fa-edit"></i>
+                                    <i class="fas fa-trash-o"></i>
+                                </div>
+                                </li>
+                                <li>
+                                <span class="handle">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </span>
+                                <div  class="icheck-primary d-inline ml-2">
+                                    <input type="checkbox" value="" name="todo4" id="todoCheck4">
+                                    <label for="todoCheck4"></label>
+                                </div>
+                                <span class="text">Let theme shine like a star</span>
+                                <small class="badge badge-success"><i class="far fa-clock"></i> 3 days</small>
+                                <div class="tools">
+                                    <i class="fas fa-edit"></i>
+                                    <i class="fas fa-trash-o"></i>
+                                </div>
+                                </li>
+                                <li>
+                                <span class="handle">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </span>
+                                <div  class="icheck-primary d-inline ml-2">
+                                    <input type="checkbox" value="" name="todo5" id="todoCheck5">
+                                    <label for="todoCheck5"></label>
+                                </div>
+                                <span class="text">Check your messages and notifications</span>
+                                <small class="badge badge-primary"><i class="far fa-clock"></i> 1 week</small>
+                                <div class="tools">
+                                    <i class="fas fa-edit"></i>
+                                    <i class="fas fa-trash-o"></i>
+                                </div>
+                                </li>
+                                <li>
+                                <span class="handle">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </span>
+                                <div  class="icheck-primary d-inline ml-2">
+                                    <input type="checkbox" value="" name="todo6" id="todoCheck6">
+                                    <label for="todoCheck6"></label>
+                                </div>
+                                <span class="text">Let theme shine like a star</span>
+                                <small class="badge badge-secondary"><i class="far fa-clock"></i> 1 month</small>
+                                <div class="tools">
+                                    <i class="fas fa-edit"></i>
+                                    <i class="fas fa-trash-o"></i>
+                                </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer clearfix">
+                          <button type="button" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Add item</button>
+                        </div>
+                    </div> --}}
+                    <div class="card">
+                        <div class="card-header moncard">
+                            <h3 class="card-title">
+                                <i class="ion ion-clipboard mr-1"></i>
+                               Taches à faire
+                            </h3>
+
+                            <div class="card-tools">
+                                <ul class="pagination pagination-sm" id="pagination">
+                                    <!-- Pagination links will be added here -->
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body ">
+                            <ul class="todo-list" id="todo-list" data-widget="todo-list">
+                                <!-- Task items will be added here -->
+                            </ul>
+                        </div>
+                        <div class="card-footer clearfix moncard">
+                            <button type="button" class="btn btn-success float-right nav-link-heart mesliens" id="add-task" data-bs-toggle="tooltip" title="Ajouter" data-toggle="modal" data-target="#modal-default"><i class="fas fa-plus msicons"></i> Tache</button>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-ml-12 col-lg-12" >
+                        <div>
+                            <div class="meswidget mb-2 pt-2">
+                                <div class="container-fluid">
+                                    <div class="row ">
+                                        <div class="col-12 col-sm-12 col-md-12 col-ml-6 col-lg-6">
+                                            <div class="small-box bg-danger">
+                                                <!-- Loading (remove the following to stop the loading)-->
+                                                <div class="overlay dark">
+                                                    <a href="#" class="attenteAjours">
+                                                        <i class="fas fa-3x fa-sync-alt"></i>
+                                                    </a>
+                                                </div>
+                                                <!-- end loading -->
+                                                <div class="inner">
+                                                    <h3 id="TacheAttente"><sup style="font-size: 20px">%</sup></h3> <!-- Espace réservé pour le pourcentage -->
+                                                    <p>Tâches en attente</p>
+                                                </div>
+                                                <div class="icon">
+                                                    <i class="ion ion-stats-bars"></i>
+                                                </div>
+                                                <a href="#" class="small-box-footer">
+                                                    More info <i class="fas fa-arrow-circle-right"></i>
+                                                </a>
+                                            </div>
+
+
+
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-12 col-ml-6 col-lg-6">
+                                            <div class="small-box bg-warning">
+                                                <!-- Loading (remove the following to stop the loading)-->
+                                                <div class="overlay dark">
+                                                    <a href="#" class="reporteAjours">
+                                                        <i class="fas fa-3x fa-sync-alt"></i>
+                                                    </a>
+                                                </div>
+                                                <!-- end loading -->
+                                                <div class="inner">
+                                                    <h3 id="TacheReporte"><sup style="font-size: 20px">%</sup></h3> <!-- Espace réservé pour le pourcentage -->
+                                                    <p>Tâches Reporté</p>
+                                                </div>
+                                                <div class="icon">
+                                                    <i class="ion ion-stats-bars"></i>
+                                                </div>
+                                                <a href="#" class="small-box-footer">
+                                                    More info <i class="fas fa-arrow-circle-right"></i>
+                                                </a>
+                                            </div>
+
+
+
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-12 col-ml-6 col-lg-6">
+                                            <div class="small-box bg-primary">
+                                                <!-- Loading (remove the following to stop the loading)-->
+                                                <div class="overlay dark">
+                                                    <a href="#" class="coursAjours">
+                                                        <i class="fas fa-3x fa-sync-alt"></i>
+                                                    </a>
+                                                </div>
+                                                <!-- end loading -->
+                                                <div class="inner">
+                                                    <h3 id="TacheCours"><sup style="font-size: 20px">%</sup></h3> <!-- Espace réservé pour le pourcentage -->
+                                                    <p>Tâches en cours</p>
+                                                </div>
+                                                <div class="icon">
+                                                    <i class="ion ion-stats-bars"></i>
+                                                </div>
+                                                <a href="#" class="small-box-footer">
+                                                    More info <i class="fas fa-arrow-circle-right"></i>
+                                                </a>
+                                            </div>
+
+
+
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-12 col-ml-6 col-lg-6">
+                                            <div class="small-box bg-success">
+                                                <!-- Loading (remove the following to stop the loading)-->
+                                                <div class="overlay dark">
+                                                    <a href="#" class="termeneAjours">
+                                                        <i class="fas fa-3x fa-sync-alt"></i>
+                                                    </a>
+                                                </div>
+                                                <!-- end loading -->
+                                                <div class="inner">
+                                                    <h3 id="task-percentage"><sup style="font-size: 20px">%</sup></h3> <!-- Espace réservé pour le pourcentage -->
+                                                    <p>Tâches accomplies</p>
+                                                </div>
+                                                <div class="icon">
+                                                    <i class="ion ion-stats-bars"></i>
+                                                </div>
+                                                <a href="#" class="small-box-footer">
+                                                    More info <i class="fas fa-arrow-circle-right"></i>
+                                                </a>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
                 <div class="col-12 col-sm-12 col-md-12 col-ml-12 col-lg-6">
                     <div class="card card-warning">
@@ -211,7 +469,7 @@
                         </div> --}}
                     {{-- RADRAR MAITRISES ET COMPETENCES DEBUT --}}
                 </div>
-                
+
 
 
 
@@ -285,12 +543,16 @@
                     </div>
                 </div> --}}
 
-               
+
 
             </div>
         </div>
     </div>
 
 
-    
+
 </section>
+
+
+
+

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Exception;
+use App\Models\User;
+use App\Models\Projet;
 use App\Models\Parametre;
 use Illuminate\Http\Request;
 use App\Models\TypeParametre;
@@ -20,6 +22,11 @@ class ParametreController extends Controller
             $data['notifications'] = $data['user']->unreadNotifications;
 
         }
+        // DONNEE POUR LE FORMULAIR D'AJOUT D'UNE TACHE DANS LE HOMEADMIN DEBUT
+        $data ['projets'] = Projet::where('supprimer','=',0)->orderBy('name')->get();
+        $data ['users'] = User::where('profil_id','!=',1)->where('supprimer','=',0)->get();
+    // DONNEE POUR LE FORMULAIR D'AJOUT D'UNE TACHE DANS LE HOMEADMIN FIN
+
         $data['ParametreTotal']= Parametre::where('supprimer','=',0)->orderBy('code')->count();
         $data['ParametreTotalC']= Parametre::where('supprimer','=',1)->orderBy('code')->count();
         $data['type_parametres']= TypeParametre::where('supprimer','=',0)->orderBy('code')->get();
@@ -34,6 +41,11 @@ class ParametreController extends Controller
             $data['notifications'] = $data['user']->unreadNotifications;
 
         }
+        // DONNEE POUR LE FORMULAIR D'AJOUT D'UNE TACHE DANS LE HOMEADMIN DEBUT
+        $data ['projets'] = Projet::where('supprimer','=',0)->orderBy('name')->get();
+        $data ['users'] = User::where('profil_id','!=',1)->where('supprimer','=',0)->get();
+    // DONNEE POUR LE FORMULAIR D'AJOUT D'UNE TACHE DANS LE HOMEADMIN FIN
+
        $data['ParametreTotal']= Parametre::where('supprimer','=',0)->orderBy('code')->count();
        $data['ParametreTotalC']= Parametre::where('supprimer','=',1)->orderBy('code')->count();
        $data['type_parametres']= TypeParametre::where('supprimer','=',0)->orderBy('code')->get();

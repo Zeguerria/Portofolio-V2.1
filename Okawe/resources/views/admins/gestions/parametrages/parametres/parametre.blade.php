@@ -9,7 +9,7 @@
 
 @extends('admins.menus.menu')
 @section('titre')
-Parametre
+Parametres
 @endsection
 @section('header')
 @endsection

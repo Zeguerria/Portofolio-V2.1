@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class ProjetSeeder extends Seeder
 {
@@ -13,5 +14,9 @@ class ProjetSeeder extends Seeder
     public function run(): void
     {
         //
+        DB::table('projets')->insert([
+            ['id'=>1, 'name'=> "Aucun", 'description'=>"Aucune description"],
+            ['id'=>2, 'name'=> "Protofolio", 'description'=>"Conception de mon portofolio"],
+        ]);
     }
 }

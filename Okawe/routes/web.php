@@ -250,23 +250,39 @@ Route::post('/comments/{comment}/admin-reply', 'App\Http\Controllers\RouteContro
             Route::post('RecupProjet', 'App\Http\Controllers\ProjetController@recupUnCorbeille')->name('RecupProjet');
         // FONCTION FIN
     // PROJET FIN
-    // PROJET DEBUT
+    // TASK DEBUT
         // CHEMIN DES PAGES DEBUT
-        Route::get('Projets', 'App\Http\Controllers\ProjetController@index')->name('P-Projets');
-        Route::get('ProjetCorbeille', 'App\Http\Controllers\ProjetController@indexCorbeille')->name('PC-Projets');
-    //CHEMIN DES PAGE FIN
-    //AUTRES FUNCTION DEBUT
-        Route::get('DeleteAllProjet', 'App\Http\Controllers\ProjetController@destroyTous')->name('D-All-PJ');
-        Route::get('CorbeilleAllProjet', 'App\Http\Controllers\ProjetController@corbeilleAll')->name('C-All-PJ');
-        Route::get('RecupAllProjet', 'App\Http\Controllers\ProjetController@recupTousCorbeille')->name('R-All-PJ');
+            Route::get('Tasks', 'App\Http\Controllers\TaskController@index')->name('TS-Tasks');
+            // Route::get('HomeTask', 'App\Http\Controllers\TaskController@hometasks')->name('HT-HomeTasks');
+            Route::get('TaskCorbeille', 'App\Http\Controllers\TaskController@indexCorbeille')->name('TSC-Tasks');
+        //CHEMIN DES PAGE FIN
+        //AUTRES FUNCTION DEBUT
+            Route::get('DeleteAllTask', 'App\Http\Controllers\TaskController@destroyTous')->name('D-All-TS');
+            Route::get('CorbeilleAllTask', 'App\Http\Controllers\TaskController@corbeilleAll')->name('C-All-TS');
+            Route::get('RecupAllTask', 'App\Http\Controllers\TaskController@recupTousCorbeille')->name('R-All-TS');
+            // routes/web.php ou routes/api.php
+            Route::get('/tasks/events', 'App\Http\Controllers\TaskController@getEvents');
+            Route::get('/tasks', 'App\Http\Controllers\TaskController@getTasks')->name('tasks.list');
+            // Route::get('/statusData','App\Http\Controllers\TaskController@getStatusData');
+            Route::get('/TacheTermine', 'App\Http\Controllers\TaskController@TacheTermine');
+            Route::get('/TacheAttente', 'App\Http\Controllers\TaskController@TacheAttente');
+            Route::get('/TacheReporte', 'App\Http\Controllers\TaskController@TacheReporte');
+            Route::get('/TacheCours', 'App\Http\Controllers\TaskController@TacheCours');
 
-    //AUTRES FUNCTION FIN
-    //FONCTIONS DEBUT
-        Route::post('AjouterProjet', 'App\Http\Controllers\ProjetController@store')->name('AjouterProjet');
-        Route::post('ModifierProjet', 'App\Http\Controllers\ProjetController@update')->name('ModifierProjet');
-        Route::post('SupprimerProjet', 'App\Http\Controllers\ProjetController@destroy')->name('SupprimerProjet');
-        Route::post('CorbeillProjet', 'App\Http\Controllers\ProjetController@corbeille')->name('CorbeilleProjet');
-        Route::post('RecupProjet', 'App\Http\Controllers\ProjetController@recupUnCorbeille')->name('RecupProjet');
-    // FONCTION FIN
-// PROJET FIN
+
+            // / Route pour mettre à jour une tâche
+            // Route::put('/tasks/{task}', 'App\Http\Controllers\TaskController@updateStatus')->name('tasks.update');
+            // web.php (Route)
+Route::put('/tasks/{id}', 'App\Http\Controllers\TaskController@updateStatus')->name('tasks.updateStatus');
+Route::delete('/tasks/{task}', 'App\Http\Controllers\TaskController@destroyTask')->name('tasks.destroy');
+
+        //AUTRES FUNCTION FIN
+        //FONCTIONS DEBUT
+            Route::post('AjouterTask', 'App\Http\Controllers\TaskController@store')->name('AjouterTask');
+            Route::post('ModifierTask', 'App\Http\Controllers\TaskController@update')->name('ModifierTask');
+            Route::post('SupprimerTask', 'App\Http\Controllers\TaskController@destroy')->name('SupprimerTask');
+            Route::post('CorbeillTask', 'App\Http\Controllers\TaskController@corbeille')->name('CorbeilleTask');
+            Route::post('RecupTask', 'App\Http\Controllers\TaskController@recupUnCorbeille')->name('RecupTask');
+        // FONCTION FIN
+    // TASK FIN
 //  ADMIN FIN

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Exception;
+use App\Models\User;
+use App\Models\Projet;
 use App\Models\Parametre;
 use Illuminate\Http\Request;
 use App\Models\CompetenceMaitrise;
@@ -17,6 +19,11 @@ class CompetenceMaitriseController extends Controller
 {
     public function index()
     {
+        // DONNEE POUR LE FORMULAIR D'AJOUT D'UNE TACHE DANS LE HOMEADMIN DEBUT
+            $data ['projets'] = Projet::where('supprimer','=',0)->orderBy('name')->get();
+            $data ['users'] = User::where('profil_id','!=',1)->where('supprimer','=',0)->get();
+        // DONNEE POUR LE FORMULAIR D'AJOUT D'UNE TACHE DANS LE HOMEADMIN FIN
+
         if(Auth::user()){
             $data['user'] = Auth::user();
             $data['notifications'] = $data['user']->unreadNotifications;
@@ -258,6 +265,11 @@ class CompetenceMaitriseController extends Controller
             $data['notifications'] = $data['user']->unreadNotifications;
 
         }
+        // DONNEE POUR LE FORMULAIR D'AJOUT D'UNE TACHE DANS LE HOMEADMIN DEBUT
+        $data ['projets'] = Projet::where('supprimer','=',0)->orderBy('name')->get();
+        $data ['users'] = User::where('profil_id','!=',1)->where('supprimer','=',0)->get();
+    // DONNEE POUR LE FORMULAIR D'AJOUT D'UNE TACHE DANS LE HOMEADMIN FIN
+
 
 
     // Renvoyer la vue avec les données paginées

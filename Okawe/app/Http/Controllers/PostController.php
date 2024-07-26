@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Exception;
 use App\Models\Post;
+use App\Models\User;
+use App\Models\Projet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StorePostRequest;
@@ -23,6 +25,11 @@ class PostController extends Controller
             $data['user'] = Auth::user();
             $data['notifications'] = $data['user']->unreadNotifications;
         }
+        // DONNEE POUR LE FORMULAIR D'AJOUT D'UNE TACHE DANS LE HOMEADMIN DEBUT
+        $data ['projets'] = Projet::where('supprimer','=',0)->orderBy('name')->get();
+        $data ['users'] = User::where('profil_id','!=',1)->where('supprimer','=',0)->get();
+    // DONNEE POUR LE FORMULAIR D'AJOUT D'UNE TACHE DANS LE HOMEADMIN FIN
+
         $data['PostT']= Post::where('supprimer','=',0)->count();
         $data['PostTC']= Post::where('supprimer','=',1)->count();
         $data['posts']= Post::where('supprimer','=',0)->orderBy('title')->get();
@@ -33,6 +40,11 @@ class PostController extends Controller
             $data['user'] = Auth::user();
             $data['notifications'] = $data['user']->unreadNotifications;
         }
+        // DONNEE POUR LE FORMULAIR D'AJOUT D'UNE TACHE DANS LE HOMEADMIN DEBUT
+        $data ['projets'] = Projet::where('supprimer','=',0)->orderBy('name')->get();
+        $data ['users'] = User::where('profil_id','!=',1)->where('supprimer','=',0)->get();
+    // DONNEE POUR LE FORMULAIR D'AJOUT D'UNE TACHE DANS LE HOMEADMIN FIN
+
         $data['PostT']= Post::where('supprimer','=',0)->count();
         $data['PostTC']= Post::where('supprimer','=',1)->count();
         $data['posts']= Post::where('supprimer','=',1)->orderBy('title')->get();

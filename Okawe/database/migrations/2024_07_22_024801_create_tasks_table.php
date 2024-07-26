@@ -13,14 +13,17 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('project_id')->constrained()->onDelete('cascade');
+            $table->foreignId('project_id')->constrained('projets')->onDelete('cascade'); // Référence correcte à la table 'projet'
             $table->string('title');
             $table->text('description')->nullable();
-            $table->string('supprimer')->default(0);
-            $table->enum('status', ['pending', 'in_progress', 'completed'])->default('pending');
+            $table->string('supprimer')->default('0');
+            $table->enum('status', ['attente', 'cours', 'termine','reporte'])->default('attente');
             $table->foreignId('assigned_to')->nullable()->constrained('users')->onDelete('set null');
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
             $table->timestamps();
         });
+        
     }
 
     /**

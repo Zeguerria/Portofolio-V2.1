@@ -21,7 +21,7 @@
             border-radius: 8px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
         }
-        
+
         .fc-toolbar {
             border-radius: 8px 8px 0 0;
             padding: 10px;
@@ -80,7 +80,7 @@
             }
         }
     </style>
-   
+
     {{-- <link rel="stylesheet" href="{{ asset('admins/plugins/fontawesome-free/css/all.min.css') }}"> --}}
     <!-- FullCalendar -->
     {{-- <link rel="stylesheet" href="{{ asset('admins/plugins/fullcalendar/main.css') }}"> --}}
@@ -189,6 +189,53 @@
                 -moz-animation-play-state: paused !important;
                 -o-animation-play-state: paused !important;
             } */
+             /* CSS pour personnaliser les événements du calendrier */
+            .fc-event-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                background:linear-gradient(90deg,#F0F0F0,#E9E9E9); /* Fond blanc pour les événements */
+                border: 1px solid #ccc; /* Bordure gris clair */
+                border-radius: 5px; /* Coins arrondis */
+                padding: 10px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                cursor: pointer;
+                transition: background-color 0.3s, box-shadow 0.3s;
+            }
+            .fc-event-content:hover {
+                background-color: #f0f0f0;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            .fc-event-title {
+                font-size: 0.9em;
+                font-weight: bold;
+                /* color:#000; */
+            }
+
+
+
+
+
+/* CSS pour rendre le calendrier réactif */
+#calendar {
+    width: 100%;
+    height: auto; /* Ajuste automatiquement la hauteur */
+}
+
+@media (max-width: 768px) {
+    .fc-event-content {
+        padding: 8px;
+    }
+    .fc-event-title {
+        font-size: 0.8em;
+    }
+    .fc-event-status {
+        font-size: 0.7em;
+    }
+}
+
+
 
 
 
@@ -197,6 +244,18 @@
         </style>
         {{-- MON CSS DEBUT  --}}
     <style>
+        /* SIMPLE CSS DEBUT*/
+            .checkbox-disabled {
+                cursor: not-allowed;
+            }
+            .edit-disabled {
+                display: none;
+            }
+            .text-line-through {
+                text-decoration: line-through;
+            }
+        /* SIMPLE CSS FIN*/
+
 
 
         /* CLAIR DEBUT */
@@ -289,24 +348,70 @@
                 background-color: #ffffff;
                 color: #000;
             }
-            body.light-mode.chartTitre{
+            body.light-mode .chartTitre{
                 color : #000;
                 font-family: 18px;
 
             }
-            body.light-mode.chartTitreG{
+            body.light-mode .chartTitreG{
                 color : #000;
                 font-family: 20;
 
             }
+            body.light-mode .fc-event-status {
+                font-size: 0.8em;
+                color: #0b0b0b; /* Couleur du texte pour le statut */
+            }
+            body.light-mode .fc-event-attente {
+                background: #b72f3b; /* Rouge clair pour 'attente' */
+                border-color: #b72f3b;
+            }
+            body.light-mode .fc-event-title {
+                color:#000;
+            }
+            body.light-mode .fc-event-cours {
+                background: #fff3cd; /* Jaune clair pour 'cours' */
+                border-color: #ffeeba;
+            }
+            body.light-mode .fc-event-ternime {
+                background: #03f13b; /* Vert clair pour 'terminé' */
+                border-color: #1df850;
+            }
+            body.light-mode .fc-event-reporte {
+                background: #3d6ef7; /* Bleu clair pour 'reporté' */
+                border-color: #b8daff;
+            }
         /* CLAIR FIN */
 
         /* Sombre Debut */
-            body.dark-mode.chartTitre{
+            body.dark-mode .fc-event-reporte {
+                background: #0143fa; /* Bleu clair pour 'reporté' */
+                border-color: #80bcfc;
+            }
+            body.dark-mode .fc-event-ternime {
+                background: #019e26; /* Vert clair pour 'terminé' */
+                border-color: #028220;
+            }
+            body.dark-mode .fc-event-cours {
+                background: rgb(145, 111, 2); /* Jaune clair pour 'cours' */
+                border-color: rgb(255, 192, 4);
+            }
+            body.dark-mode .fc-event-title {
+                color: #0F056B;
+            }
+            body.dark-mode .fc-event-attente {
+                background: #b40000; /* Rouge clair pour 'attente' */
+                border-color: #b40000;
+            }
+            body.dark-mode .fc-event-status {
+                font-size: 0.8em;
+                color: #00f2ff; /* Couleur du texte pour le statut */
+            }
+            body.dark-mode .chartTitre{
                 color : #fff;
                 font-family: 18px;
             }
-            body.dark-mode.chartTitreG{
+            body.dark-mode .chartTitreG{
                 color : #fff;
                 font-family: 20px;
             }
@@ -482,6 +587,7 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+
  <script src="{{asset('admins/dist/js/bundle.js')}}"></script>
  <script src="{{asset('admins/dist/js/bdlmn.js')}}"></script>
 <script src="{{asset('admins/plugins/jquery/jquery.min.js')}}"></script>
@@ -544,24 +650,73 @@
     <!-- FullCalendar -->
 <link rel="stylesheet" href="{{ asset('admins/plugins/fullcalendar/main.css') }}">
 <script src="{{ asset('admins/plugins/fullcalendar/main.js') }}"></script>
-<script>
-    $(document).ready(function() {
-      var calendarEl = document.getElementById('calendar');
-      var calendar = new FullCalendar.Calendar(calendarEl, {
-        headerToolbar: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay'
-        },
-        themeSystem: 'bootstrap',
-        events: [
-          // Your event data here
-        ]
-      });
-      calendar.render();
-    });
-  </script>
-  
+
+{{-- CALENDRIER DEBUT --}}
+    <script>
+        $(document).ready(function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                themeSystem: 'bootstrap',
+                events: function(info, successCallback, failureCallback) {
+                    $.ajax({
+                        url: '/tasks/events',
+                        method: 'GET',
+                        success: function(data) {
+                            successCallback(data);
+                        },
+                        error: function() {
+                            failureCallback('Erreur lors de la récupération des événements');
+                        }
+                    });
+                },
+                editable: true,
+                selectable: true,
+                eventClick: function(info) {
+                    $('#modalTitle').text(info.event.title);
+                    $('#modalDescription').text(info.event.extendedProps.description || 'Aucune description');
+                    $('#modalStatus').text(info.event.extendedProps.status);
+                    $('#modalStartDate').text(info.event.startStr);
+                    $('#modalEndDate').text(info.event.endStr || 'Non défini');
+                    $('#modalProject').text(info.event.extendedProps.projectName || 'Aucun projet');
+                    $('#modalEffectuant').text(info.event.extendedProps.effectuant || 'Aucun Effectuant');
+
+                    var myModal = new bootstrap.Modal(document.getElementById('taskModal'));
+                    myModal.show();
+                },
+                eventContent: function(arg) {
+                    var title = document.createElement('div');
+                    title.className = 'fc-event-title';
+                    title.innerText = arg.event.title;
+
+                    var status = document.createElement('div');
+                    status.className = 'fc-event-status';
+                    status.innerText = arg.event.extendedProps.status;
+
+                    var container = document.createElement('div');
+                    container.className = 'fc-event-content';
+                    container.appendChild(title);
+                    container.appendChild(status);
+
+                    return { domNodes: [container] };
+                },
+                eventClassNames: function(arg) {
+                    return [
+                        'fc-event-' + (arg.event.extendedProps.status || 'default')
+                    ];
+                }
+            });
+            calendar.render();
+        });
+    </script>
+{{-- CALENDRIER FIN --}}
+
+
+
 
     {{-- GSAP DEBUT --}}
         <script src="{{asset('glbal/gsap/gsap.min.js')}}"></script>

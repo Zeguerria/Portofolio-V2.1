@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Exception;
+use App\Models\User;
 use App\Models\Profil;
+use App\Models\Projet;
 use App\Models\Habilitation;
 use Illuminate\Http\Request;
 use App\Models\ProfilHabilitation;
@@ -24,6 +26,11 @@ class ProfilHabilitationController extends Controller
             $data['notifications'] = $data['user']->unreadNotifications;
 
         }
+        // DONNEE POUR LE FORMULAIR D'AJOUT D'UNE TACHE DANS LE HOMEADMIN DEBUT
+        $data ['projets'] = Projet::where('supprimer','=',0)->orderBy('name')->get();
+        $data ['users'] = User::where('profil_id','!=',1)->where('supprimer','=',0)->get();
+    // DONNEE POUR LE FORMULAIR D'AJOUT D'UNE TACHE DANS LE HOMEADMIN FIN
+
         $data['ProfilHabilitationT']= ProfilHabilitation::where('supprimer','=',0)->count();
         $data['ProfilHabilitationTC']= ProfilHabilitation::where('supprimer','=',1)->count();
         $data['profils']= Profil::where('supprimer','=',0)->orderBy('libelle')->get();
@@ -38,6 +45,11 @@ class ProfilHabilitationController extends Controller
             $data['notifications'] = $data['user']->unreadNotifications;
 
         }
+        // DONNEE POUR LE FORMULAIR D'AJOUT D'UNE TACHE DANS LE HOMEADMIN DEBUT
+        $data ['projets'] = Projet::where('supprimer','=',0)->orderBy('name')->get();
+        $data ['users'] = User::where('profil_id','!=',1)->where('supprimer','=',0)->get();
+    // DONNEE POUR LE FORMULAIR D'AJOUT D'UNE TACHE DANS LE HOMEADMIN FIN
+
         $data['ProfilHabilitationT']= ProfilHabilitation::where('supprimer','=',0)->count();
         $data['ProfilHabilitationTC']= ProfilHabilitation::where('supprimer','=',1)->count();
         $data['habilitations']= Habilitation::where('supprimer','=',0)->orderBy('libelle')->get();

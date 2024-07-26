@@ -26,6 +26,9 @@ class ProjetController extends Controller
         $data ['projets'] = Projet::where('supprimer','=',0)->orderBy('name')->get();
         return view('admins.gestions.projets.projet')->with($data);
     }
+   
+
+
     public function indexCorbeille(){
         if(Auth::user()){
             $data['user'] = Auth::user();
@@ -112,7 +115,7 @@ class ProjetController extends Controller
         return back();
 
     }
-    public function corbeille_all(Request $request){
+    public function corbeilleAll(Request $request){
         $projets = Projet::where('supprimer', 0)->get();
         try{
             foreach($projets as $value){

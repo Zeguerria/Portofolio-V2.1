@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Exception;
+use App\Models\User;
+use App\Models\Projet;
 use App\Models\Entreprise;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\TryCatch;
@@ -23,6 +25,11 @@ class EntrepriseController extends Controller
             $data['notifications'] = $data['user']->unreadNotifications;
 
         }
+        // DONNEE POUR LE FORMULAIR D'AJOUT D'UNE TACHE DANS LE HOMEADMIN DEBUT
+        $data ['projets'] = Projet::where('supprimer','=',0)->orderBy('name')->get();
+        $data ['users'] = User::where('profil_id','!=',1)->where('supprimer','=',0)->get();
+    // DONNEE POUR LE FORMULAIR D'AJOUT D'UNE TACHE DANS LE HOMEADMIN FIN
+
         $data['EntrepriseTotal']= Entreprise::where('supprimer','=',0)->count();
         $data['EntrepriseTotalC']= Entreprise::where('supprimer','=',1)->count();
         $data ['entreprises'] = Entreprise::where('supprimer','=',0)->orderBy('nom')->get();
@@ -35,6 +42,11 @@ class EntrepriseController extends Controller
             $data['notifications'] = $data['user']->unreadNotifications;
 
         }
+        // DONNEE POUR LE FORMULAIR D'AJOUT D'UNE TACHE DANS LE HOMEADMIN DEBUT
+        $data ['projets'] = Projet::where('supprimer','=',0)->orderBy('name')->get();
+        $data ['users'] = User::where('profil_id','!=',1)->where('supprimer','=',0)->get();
+    // DONNEE POUR LE FORMULAIR D'AJOUT D'UNE TACHE DANS LE HOMEADMIN FIN
+
         $data['EntrepriseTotal']= Entreprise::where('supprimer','=',0)->count();
         $data['EntrepriseTotalC']= Entreprise::where('supprimer','=',1)->count();
         $data ['entreprises'] = Entreprise::where('supprimer','=',1)->orderBy('nom')->get();

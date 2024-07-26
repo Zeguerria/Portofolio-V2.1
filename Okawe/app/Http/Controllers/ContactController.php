@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Exception;
-use App\Models\Contact;
+use App\Models\User;
 
+use App\Models\Projet;
+use App\Models\Contact;
 use App\Mail\ContactMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -19,6 +21,11 @@ class ContactController extends Controller
     public function index()
     {
         //
+        // DONNEE POUR LE FORMULAIR D'AJOUT D'UNE TACHE DANS LE HOMEADMIN DEBUT
+            $data ['projets'] = Projet::where('supprimer','=',0)->orderBy('name')->get();
+            $data ['users'] = User::where('profil_id','!=',1)->where('supprimer','=',0)->get();
+        // DONNEE POUR LE FORMULAIR D'AJOUT D'UNE TACHE DANS LE HOMEADMIN FIN
+
     }
 
     public function sendProject(Request $request)
