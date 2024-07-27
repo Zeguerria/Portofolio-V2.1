@@ -1,8 +1,8 @@
-<footer class="main-footer moncard">
-    <div class="container">
+<footer class="main-footer moncard" >
+    <div class="container"  >
         <div class="row">
             <!-- Bouton mention légale -->
-            <div class="col-12 col-md-2 text-md-end">
+            <div class="col-12 col-md-2 text-md-end" >
                 <ul class="list-inline">
                     <div class="d-flex justify-content-center">
                         <li class="list-inline-item">

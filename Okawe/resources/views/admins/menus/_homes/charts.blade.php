@@ -3,7 +3,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-12 col-ml-12 col-lg-6">
-                    <div class="card ">
+                    <div data-aos="fade-up" data-aos-duration="1500">
+                        <div class="card ">
                             <div class="card-header border-0 bg-gradient-success">
 
                             <h3 class="card-title ">
@@ -42,7 +43,10 @@
                             <div id="calendar" style="width: 100%"></div>
                             </div>
                             <!-- /.card-body -->
+                        </div>
+
                     </div>
+
                     {{-- <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
@@ -171,7 +175,7 @@
                           <button type="button" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Add item</button>
                         </div>
                     </div> --}}
-                    <div class="card">
+                    <div class="card" data-aos="flip-down" data-aos-duration="1500">
                         <div class="card-header moncard">
                             <h3 class="card-title">
                                 <i class="ion ion-clipboard mr-1"></i>
@@ -199,7 +203,7 @@
                                 <div class="container-fluid">
                                     <div class="row ">
                                         <div class="col-12 col-sm-12 col-md-12 col-ml-6 col-lg-6">
-                                            <div class="small-box bg-danger">
+                                            <div class="small-box bg-danger" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
                                                 <!-- Loading (remove the following to stop the loading)-->
                                                 <div class="overlay dark">
                                                     <a href="#" class="attenteAjours">
@@ -223,7 +227,7 @@
 
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-12 col-ml-6 col-lg-6">
-                                            <div class="small-box bg-warning">
+                                            <div class="small-box bg-warning" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine">
                                                 <!-- Loading (remove the following to stop the loading)-->
                                                 <div class="overlay dark">
                                                     <a href="#" class="reporteAjours">
@@ -247,7 +251,7 @@
 
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-12 col-ml-6 col-lg-6">
-                                            <div class="small-box bg-primary">
+                                            <div class="small-box bg-primary" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500">
                                                 <!-- Loading (remove the following to stop the loading)-->
                                                 <div class="overlay dark">
                                                     <a href="#" class="coursAjours">
@@ -271,7 +275,7 @@
 
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-12 col-ml-6 col-lg-6">
-                                            <div class="small-box bg-success">
+                                            <div class="small-box bg-success" data-aos="fade-down"data-aos-easing="linear" data-aos-duration="1500">
                                                 <!-- Loading (remove the following to stop the loading)-->
                                                 <div class="overlay dark">
                                                     <a href="#" class="termeneAjours">
@@ -303,74 +307,78 @@
 
                 </div>
                 <div class="col-12 col-sm-12 col-md-12 col-ml-12 col-lg-6">
-                    <div class="card card-warning">
-                        <div class="card-header">
-                            <h3 class="card-title chartTitreG">Block Stat</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool nav-link-heart" data-card-widget="collapse">
-                                <i class="fas fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-tool nav-link-heart" data-card-widget="remove">
-                                <i class="fas fa-times"></i>
-                                </button>
+                    <div data-aos="fade-down" data-aos-duration="1500">
+                        <div class="card card-warning">
+                            <div class="card-header">
+                                <h3 class="card-title chartTitreG">Block Stat</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool nav-link-heart" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool nav-link-heart" data-card-widget="remove">
+                                    <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card-body">
-                            <div id="accordion">
-                                <div class="card card-primary">
+                            <div class="card-body">
+                                <div id="accordion">
+                                    <div class="card card-primary">
+                                        <div class="card-header">
+                                                <h4 class="card-title w-100">
+                                                    <a class="d-block w-100 chartTitre" data-toggle="collapse" href="#collapseOne">
+                                                        {{-- Réalisations équipe & Personnelle --}}
+                                                        Posts Tendance des utilisateurs
+                                                    </a>
+                                                </h4>
+                                        </div>
+                                        <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                                            <div class="card-body">
+                                            <canvas id="donutChart" width="400" height="400"></canvas>
+
+                                                {{-- <canvas id="stackedBarChart" width="400" height="200"></canvas> --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card card-info">
                                     <div class="card-header">
-                                            <h4 class="card-title w-100">
-                                                <a class="d-block w-100 chartTitre" data-toggle="collapse" href="#collapseOne">
-                                                    {{-- Réalisations équipe & Personnelle --}}
-                                                    Posts Tendance des utilisateurs
-                                                </a>
-                                            </h4>
+                                        <h4 class="card-title w-100">
+                                        <a class="d-block w-100 chartTitre" data-toggle="collapse" href="#collapseTwo">
+                                            {{-- Posts Tendance des utilisateurs --}}
+                                            Réalisations équipe & Personnelle
+
+                                        </a>
+                                        </h4>
                                     </div>
-                                    <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                                    <div id="collapseTwo" class="collapse" data-parent="#accordion">
                                         <div class="card-body">
-                                        <canvas id="donutChart" width="400" height="400"></canvas>
+                                            <canvas id="stackedBarChart" width="400" height="200"></canvas>
 
-                                            {{-- <canvas id="stackedBarChart" width="400" height="200"></canvas> --}}
+                                            {{-- <canvas id="donutChart" width="400" height="400"></canvas> --}}
                                         </div>
                                     </div>
-                                </div>
-                                <div class="card card-info">
-                                <div class="card-header">
-                                    <h4 class="card-title w-100">
-                                    <a class="d-block w-100 chartTitre" data-toggle="collapse" href="#collapseTwo">
-                                        {{-- Posts Tendance des utilisateurs --}}
-                                        Réalisations équipe & Personnelle
-
-                                    </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseTwo" class="collapse" data-parent="#accordion">
-                                    <div class="card-body">
-                                        <canvas id="stackedBarChart" width="400" height="200"></canvas>
-
-                                        {{-- <canvas id="donutChart" width="400" height="400"></canvas> --}}
                                     </div>
-                                </div>
-                                </div>
-                                <div class="card card-light">
-                                <div class="card-header">
-                                    <h4 class="card-title w-100">
-                                    <a class="d-block w-100 chartTitre" data-toggle="collapse" href="#collapseThree">
-                                       Visiteurs Par mois
-                                    </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseThree" class="collapse" data-parent="#accordion">
-                                    <div class="card-body">
-                                        <div class="chart-container">
-                                            <canvas id="visitorChart"></canvas>
+                                    <div class="card card-light">
+                                    <div class="card-header">
+                                        <h4 class="card-title w-100">
+                                        <a class="d-block w-100 chartTitre" data-toggle="collapse" href="#collapseThree">
+                                           Visiteurs Par mois
+                                        </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseThree" class="collapse" data-parent="#accordion">
+                                        <div class="card-body">
+                                            <div class="chart-container">
+                                                <canvas id="visitorChart"></canvas>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
+
                     {{-- Réalisations stackedBarChart DEBUT --}}
                         {{-- <div class="col-12 col-sm-12 col-md-12 col-ml-12 col-lg-12">
                             <div class="card card-warning" data-aos="zoom-in-down">
@@ -421,7 +429,7 @@
                         </div> --}}
                     {{-- TYPE ARCHIVE (ENTRANT/SORTANT) PAR MOIS FIN --}}
                     <div class="col-12 col-sm-12 col-md-12 col-ml-12 col-lg-12">
-                        <div class="card card-success" data-aos="fade-up">
+                        <div class="card card-success" data-aos="flip-up"  data-aos-duration="3000">
                             <div class="card-header">
                             <h3 class="card-title chartTitre">Maitrises & Compétences</h3>
                             <div class="card-tools">
@@ -435,7 +443,7 @@
                             </div>
                             <div class="card-body">
                             <div class="chart">
-                                <canvas id="radarChart" width="30" height="30"></canvas>
+                                <canvas id="radarChart" width="300" height="300"></canvas>
                             </div>
                             </div>
                             <!-- /.card-body -->

@@ -259,6 +259,9 @@
 
 
         /* CLAIR DEBUT */
+        body{
+            overflow-x: hidden;
+        }
 
             body.light-mode {
                 background-color: #ffffff;
