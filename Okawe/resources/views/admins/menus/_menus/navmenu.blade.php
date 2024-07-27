@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4" >
     <!-- Brand Logo -->
-    <a href="./dashboard" class="brand-link ">
+    <a href="{{route('HomeAdmin')}}" class="brand-link ">
         <img id="logo" src="" alt="logo" class="brand-image img-circle elevation-3 nav-link-heart" style="opacity: 0.8">
         <span class="brand-text font-weight-light nav-link-heart " ><strong class="application" style="" >A</strong><label class="application_suite" for="" >dmin</label><strong class="application" style="" >P</strong><label class="application_suite" for="" >ortofolio</label></span>
     </a>

@@ -112,7 +112,7 @@
                                                                 <p>Votre dernière connexion remonte à : {{Auth::user()->last_login}} </p>
                                                                 @else
                                                                     Nom-User et Prenom-User Par quoi commencons-nous ?
-                                                                    <p>Votre dernière connexion remonte à : maintenant </p>
+                                                                    <p>Votre dernière connexion remonte à &ensp;: maintenant </p>
                                                                 @endauth
                                                             @endif
 
@@ -358,15 +358,6 @@
     {{--  DERNIER CHART A MODIFIER FIN--}}
 
     {{-- ANIMATION DE COMPTE TOTAUX DEBUT --}}
-    {{-- // animateCount('total_2', {{ $data['emmeteurtt'] }});
-    // animateCount('total_3', {{ $data['quartiertt'] }});
-    // animateCount('total_4', {{ $data['recepteurtt'] }});
-    // animateCount('total_5', {{ $data['parametrett'] }});
-    // animateCount('total_6', {{ $data['categoriett'] }});
-    // animateCount('total_7', {{ $data['archivett'] }});
-    // animateCount('total_8', {{ $data['usertt'] }});
-    // animateCount('total_9', {{ $data['gestionnairett'] }});
-    // animateCount('total_10', {{ $data['administrationtt'] }}); --}}
         <script>
             document.addEventListener("DOMContentLoaded", function() {
                 animateCount('total_1', {{ $typeparametrett }});
@@ -375,6 +366,10 @@
                 animateCount('total_4', {{ $habilitationtt }});
                 animateCount('total_5', {{ $profiltt }});
                 animateCount('total_6', {{ $admintt }});
+                animateCount('total_7', {{ $RealisationTotal }});
+                animateCount('total_8', {{ $CompTotal }});
+                animateCount('total_9', {{ $PostT }});
+                animateCount('total_10', {{ $ProjetTotal }});
                 // Ajoutez des appels à la fonction animateCount pour chaque total
             });
 
@@ -559,7 +554,7 @@
                             });
                         }
                 // UUTILITATAIRE POUR LE WIDGET % STATUT DES TACHES REPORTE FIN
-                
+
                 // UUTILITATAIRE POUR LE WIDGET % STATUT DES TACHES EN COURS DEBUT
                     // Fonction pour animer le pourcentage des tâches en cours
                         function animatePercentageCours(newPercentage) {
@@ -589,7 +584,7 @@
                             });
                         }
                 // UUTILITATAIRE POUR LE WIDGET % STATUT DES TACHES EN COURS FIN
-                
+
 
             // MISE AJOURS DES WIDGET A LA RECHARCHE DE LA PAGE DEBUT
                 // Appels initiaux pour mettre à jour les pourcentages lorsque la page se charge

@@ -51,6 +51,18 @@ class RouteController extends Controller
             $data ['users'] = User::where('profil_id','!=',1)->where('supprimer','=',0)->get();
         // DONNEE POUR LE FORMULAIR D'AJOUT D'UNE TACHE DANS LE HOMEADMIN FIN
 
+        // REALISATION TOTAL DEBUT
+            $data['RealisationTotal']= Realisation::where('supprimer','=',0)->count();
+        // REALISATION TOTAL FIN
+        // COMPTENCENTS ET MAITRISE TOTAL DEBUT
+            $data['CompTotal'] =CompetenceMaitrise::where('supprimer', 0)->count();
+        // COMPTENCENTS ET MAITRISE TOTAL FIN
+        // POSTS TOTAL DEBUT
+        $data['PostT']= Post::where('supprimer','=',0)->count();
+        // POSTS TOTAL FIN
+        // PROJET TOTAL DEBUT
+        $data['ProjetTotal']= Projet::where('supprimer','=',0)->count();
+        // PROJET TOTAL FIN
 
 
         if(Auth::user()){

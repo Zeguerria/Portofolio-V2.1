@@ -381,9 +381,22 @@
                 background: #3d6ef7; /* Bleu clair pour 'reporté' */
                 border-color: #b8daff;
             }
+            body.light-mode .lescard {
+                background-image : url({{asset('glbal/theme/t7.jpg')}});
+                background-size : cover;
+                background-repeat: no-repeat;
+                filter : grayscale(20%);
+
+            }
         /* CLAIR FIN */
 
         /* Sombre Debut */
+            body.dark-mode .lescard {
+                background-image : url({{asset('glbal/theme/t7d.jpg')}});
+                background-size : cover;
+                background-repeat: no-repeat;
+
+            }
             body.dark-mode .fc-event-reporte {
                 background: #0143fa; /* Bleu clair pour 'reporté' */
                 border-color: #80bcfc;

@@ -4,12 +4,15 @@
             @if (Route::has('login'))
                 @auth
                 @forelse ($notifications as $notification)
-                    <div class="modal fade" id="repondre{{ $notification->id }}">
+                    <div class="modal fade animated-modal" id="repondre{{ $notification->id }}">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
-                                <div class="modal-header bgnav" style="background-image: url({{asset('glbal/theme/t7.jpg')}}) ;  background-size: cover; background-repeat: no-repeat;">
-                                    <h5 class="modal-title titre-grandiant" style="font-size : 20px; font-weight: 900; "><span><i class="fas fa-comment-dots"></i></span>&ensp;Commentaire de {{ $notification->data['comment_name'] ?? 'N/A' }} {{ $notification->data['comment_prenom'] ?? 'N/A' }} au post {{ $notification->data['comment_post'] ?? 'N/A' }}</h5>
-                                    <button type="button" class="close nav-link-heart" data-dismiss="modal" aria-label="Close">
+                                <div class="modal-header moncard" >
+                                    <h4 class="modal-title fw-bold " style="font-size : 35px; font-weight: 900; ">
+                                        <span><i class="fas fa-comment-dots mesicons"></i></span>&ensp;
+                                        <span class="comming" style="font-weight: 900;">C</span>ommentaire de <span class="comming">{{ $notification->data['comment_name'] ?? 'N/A' }} {{ $notification->data['comment_prenom'] ?? 'N/A' }} </span>au post {{ $notification->data['comment_post'] ?? 'N/A' }}
+                                    </h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: #B460B5;">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
@@ -62,11 +65,15 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-12">
-                                                <div class="modal-footer justify-content-between bgnav" style="background-image: url({{asset('glbal/theme/t7.jpg')}}) ;  background-size: cover; background-repeat: no-repeat;">
-                                                    <button type="button" class="btn mr-md-2 mb-md-0 mb-2 btn-outline-danger btn-round nav-link-heart"  data-dismiss="modal" style=" font-family: italic ;color:#D9B8F7;"><i class="fas fa-exclamation-triangle msicons"></i>&ensp;Fermer</button>
-                                                    <button type="submit" class="btn mr-md-2 mb-md-0 mb-2 btn-outline-success btn-round nav-link-heart" style=" font-family: italic ;color:#D9B8F7;"><i class="fas fa-paper-plane"></i>&ensp; Envoyer</button>
-
+                                                <div class="modal-footer justify-content-between moncard">
+                                                    <button type="button" class="btn mr-md-2 mb-md-0 mb-2 btn-outline-danger btn-round nav-link-heart" data-dismiss="modal" style="font-family: italic;">
+                                                        <i class="fas fa-exclamation-triangle msicons"></i>&ensp;Fermer
+                                                    </button>
+                                                    <button type="submit" class="btn mr-md-2 mb-md-0 mb-2 btn-outline-success btn-round nav-link-heart" style="font-family: italic;">
+                                                        <i class="fas fa-paper-plane msicons"></i>&ensp;Répondre
+                                                    </button>
                                                 </div>
+
                                             </div>
                                         </div>
                                     </form>
@@ -109,7 +116,7 @@
                         <p><strong><i class="fas fa-calendar-alt msicons"></i>&ensp;Date de fin :&ensp;</strong> <span id="modalEndDate"></span></p>
                         <p><strong><i class="fa fa-crosshairs msicons" aria-hidden="true"></i>&ensp;Projet :&ensp;</strong> <span id="modalProject"></span></p>
                         <p><strong><i class="fa fa-crosshairs msicons" aria-hidden="true"></i>&ensp;Qui doit éffectuer la tache :&ensp;</strong> <span id="modalEffectuant"></span></p>
-        
+
                         <div class="modal-footer justify-content-between moncard">
                             <button type="button" class="btn mr-md-2 mb-md-0 mb-2 btn-outline-danger btn-round nav-link-heart" data-dismiss="modal" style="font-family: italic;">
                                 <i class="fas fa-exclamation-triangle msicons"></i>&ensp;Fermer
@@ -119,7 +126,7 @@
                             </button> --}}
                         </div>
                     </div>
-                
+
                 </div>
             </div>
         </div>

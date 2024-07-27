@@ -6,9 +6,12 @@
                     <div class="card ">
                             <div class="card-header border-0 bg-gradient-success">
 
-                            <h3 class="card-title chartTitre">
-                                <i class="far fa-calendar-alt"></i>
-                                Calendar
+                            <h3 class="card-title ">
+                                <i class="far fa-calendar-alt msicons"></i>
+                                <span class="chartTitre">
+                                    Calendrier
+                                </span>
+
                             </h3>
                             <!-- tools card -->
                             <div class="card-tools">
@@ -18,10 +21,10 @@
                                     <i class="fas fa-bars"></i>
                                 </button>
                                 <div class="dropdown-menu" role="menu">
-                                    <a href="#" class="dropdown-item">Ajouter une tache</a>
-                                    <a href="#" class="dropdown-item">Clear events</a>
+                                    <a href="#" class="dropdown-item" data-bs-toggle="tooltip" title="Ajouter" data-placement="bottom" data-toggle="modal" data-target="#modal-default">Ajouter une tache</a>
+                                    {{-- <a href="#" class="dropdown-item">Clear events</a> --}}
                                     <div class="dropdown-divider"></div>
-                                    <a href="#" class="dropdown-item">View calendar</a>
+                                    <a href="{{route('C-All-TS')}}" class="dropdown-item">Supprimer toutes taches</a>
                                 </div>
                                 </div>
                                 <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
@@ -200,7 +203,7 @@
                                                 <!-- Loading (remove the following to stop the loading)-->
                                                 <div class="overlay dark">
                                                     <a href="#" class="attenteAjours">
-                                                        <i class="fas fa-3x fa-sync-alt"></i>
+                                                        <i class="fas fa-3x fa-sync-alt msicons"></i>
                                                     </a>
                                                 </div>
                                                 <!-- end loading -->
@@ -209,7 +212,7 @@
                                                     <p>Tâches en attente</p>
                                                 </div>
                                                 <div class="icon">
-                                                    <i class="ion ion-stats-bars"></i>
+                                                    <i class="ion ion-stop"></i>
                                                 </div>
                                                 <a href="#" class="small-box-footer">
                                                     More info <i class="fas fa-arrow-circle-right"></i>
@@ -224,7 +227,7 @@
                                                 <!-- Loading (remove the following to stop the loading)-->
                                                 <div class="overlay dark">
                                                     <a href="#" class="reporteAjours">
-                                                        <i class="fas fa-3x fa-sync-alt"></i>
+                                                        <i class="fas fa-3x fa-sync-alt msicons"></i>
                                                     </a>
                                                 </div>
                                                 <!-- end loading -->
@@ -233,7 +236,7 @@
                                                     <p>Tâches Reporté</p>
                                                 </div>
                                                 <div class="icon">
-                                                    <i class="ion ion-stats-bars"></i>
+                                                    <i class="ion ion-pause"></i>
                                                 </div>
                                                 <a href="#" class="small-box-footer">
                                                     More info <i class="fas fa-arrow-circle-right"></i>
@@ -248,7 +251,7 @@
                                                 <!-- Loading (remove the following to stop the loading)-->
                                                 <div class="overlay dark">
                                                     <a href="#" class="coursAjours">
-                                                        <i class="fas fa-3x fa-sync-alt"></i>
+                                                        <i class="fas fa-3x fa-sync-alt msicons"></i>
                                                     </a>
                                                 </div>
                                                 <!-- end loading -->
@@ -257,7 +260,7 @@
                                                     <p>Tâches en cours</p>
                                                 </div>
                                                 <div class="icon">
-                                                    <i class="ion ion-stats-bars"></i>
+                                                    <i class="ion ion-play"></i>
                                                 </div>
                                                 <a href="#" class="small-box-footer">
                                                     More info <i class="fas fa-arrow-circle-right"></i>
@@ -272,7 +275,7 @@
                                                 <!-- Loading (remove the following to stop the loading)-->
                                                 <div class="overlay dark">
                                                     <a href="#" class="termeneAjours">
-                                                        <i class="fas fa-3x fa-sync-alt"></i>
+                                                        <i class="fas fa-3x fa-sync-alt msicons"></i>
                                                     </a>
                                                 </div>
                                                 <!-- end loading -->
@@ -281,7 +284,7 @@
                                                     <p>Tâches accomplies</p>
                                                 </div>
                                                 <div class="icon">
-                                                    <i class="ion ion-stats-bars"></i>
+                                                    <i class="ion ion-checkmark-round"></i>
                                                 </div>
                                                 <a href="#" class="small-box-footer">
                                                     More info <i class="fas fa-arrow-circle-right"></i>
